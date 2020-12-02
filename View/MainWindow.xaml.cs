@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using View.Login;
 
 namespace View
 {
@@ -24,7 +25,24 @@ namespace View
         public MainWindow()
         {
             InitializeComponent();
+            CenterWindowOnScreen();
             txtTest.Text = LoginService.userLogged.Firstname;
+            AddBar();
+        }
+
+        public void AddBar(){
+            UserInfo userInfo = new UserInfo();
+            stpBar.Children.Add(userInfo);
+        }
+
+        private void CenterWindowOnScreen()
+        {
+            double screenWidth = SystemParameters.PrimaryScreenWidth;
+            double screenHeight = SystemParameters.PrimaryScreenHeight;
+            double windowWidth = this.Width;
+            double windowHeight = this.Height;
+            this.Left = (screenWidth / 2) - (windowWidth / 2);
+            this.Top = (screenHeight / 2) - (windowHeight / 2);
         }
     }
 }

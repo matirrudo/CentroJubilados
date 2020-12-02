@@ -1,28 +1,38 @@
-﻿<Window x:Class="View.Login"
+﻿<Window x:Class="View.Login.Login"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:View"
+        xmlns:local="clr-namespace:View.Login"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
         mc:Ignorable="d"
-        Title="Login" Height="186" Width="313" TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-     TextElement.FontWeight="Regular"
-     TextElement.FontSize="13"
-     TextOptions.TextFormattingMode="Ideal"
-     TextOptions.TextRenderingMode="Auto"
-     Background="{DynamicResource MaterialDesignPaper}"
-     FontFamily="{DynamicResource MaterialDesignFont}">
-
+        Title="Login" Height="580" Width="375" MinHeight="580" MinWidth="375" Icon="/Rosources/img/hands.png" >
     <StackPanel VerticalAlignment="Center">
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <TextBlock TextWrapping="Wrap" Text="Usuario:" Margin="0,5,0,0"/>
-            <TextBox x:Name="txtUsername" Margin="10,0,0,0" Width="100"/>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <TextBlock TextWrapping="Wrap" Text="Contraseña:" Margin="20,5,0,0"/>
-            <PasswordBox x:Name="txtPassword" Margin="10,0,0,0" Width="100"/>
-        </StackPanel>
-        <Button x:Name="btnLogin" Content="Login" Width="100" Margin="0,20,0,0" Click="BtnLogin_Click"/>
+        <Image Width="250" Margin="0,0,0,0" Source="/Rosources/img/hands.png"></Image>
+        <TextBlock HorizontalAlignment="Center" Height="26" Margin="0,20,0,10" VerticalAlignment="Top" Width="250" FontSize="20" FontWeight="Bold" TextAlignment="Center">Inicia sesión con tu cuenta</TextBlock>
+        <!--Breve descripcion-->
+        <TextBlock HorizontalAlignment="Center" Height="40" Margin="5" TextWrapping="Wrap" VerticalAlignment="Top" Width="227" TextAlignment="Center"><Run Text="Inici"/><Run Text="a"/><Run Text=" sesión "/><Run Text="con tu cuenta p"/><Run Text="ara realizar todas las funcionalidades del sistema."/><Run Text=" "/></TextBlock>
+
+        <!--Usuario o email-->
+        <TextBox x:Name="txtUsername" HorizontalAlignment="Center" Padding="-2,-7,0,-10" Height="30" Margin="10" TextWrapping="Wrap"  VerticalAlignment="Top" Width="227"
+                 Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+                 materialDesign:HintAssist.Hint="Usuario o email"/>
+
+        <!--Contraseña-->
+        <PasswordBox x:Name="txtPassword" HorizontalAlignment="Center" Padding="-2,-7,0,-10" Height="30" Margin="10"  VerticalAlignment="Top" Width="226"
+                     Style="{StaticResource MaterialDesignOutlinedPasswordFieldPasswordBox}"
+                     materialDesign:HintAssist.Hint="Contraseña"/>
+
+
+        <!--Para recordar sesion-->
+        <CheckBox Name="remember" IsChecked="False" HorizontalAlignment="Center" Height="20" Margin="10" VerticalAlignment="Top" Width="227" Cursor="Hand">
+            Recuerdame
+        </CheckBox>
+
+        <!--Iniciar sesion-->
+        <Button x:Name="btnLogin" Content="Entrar" HorizontalAlignment="Center" Height="40" Margin="10" VerticalAlignment="Top" Width="227" Background="#FF1956B4" Foreground="White" BorderBrush="#FF1956B4" Click="BtnLogin_Click" />
+        <TextBlock HorizontalAlignment="Center" Margin="5" TextWrapping="Wrap" VerticalAlignment="Top" Width="227" TextAlignment="Center" FontStyle="Italic" Foreground="DimGray">¿Necesita ayuda?</TextBlock>
+        
     </StackPanel>
 </Window>

@@ -50,6 +50,30 @@
     <Reference Include="MaterialDesignThemes.Wpf, Version=3.2.0.1979, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignThemes.3.2.0\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="SharpVectors.Converters.Wpf, Version=1.7.1.0, Culture=neutral, PublicKeyToken=b532964b8548be77, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpVectors.Reloaded.1.7.1\lib\net46\SharpVectors.Converters.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpVectors.Core, Version=1.7.1.0, Culture=neutral, PublicKeyToken=7407205e337c98ef, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpVectors.Reloaded.1.7.1\lib\net46\SharpVectors.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpVectors.Css, Version=1.7.1.0, Culture=neutral, PublicKeyToken=7a46e3f532fdb787, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpVectors.Reloaded.1.7.1\lib\net46\SharpVectors.Css.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpVectors.Dom, Version=1.7.1.0, Culture=neutral, PublicKeyToken=517340b6277b1a7a, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpVectors.Reloaded.1.7.1\lib\net46\SharpVectors.Dom.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpVectors.Model, Version=1.7.1.0, Culture=neutral, PublicKeyToken=2236cfc76b505845, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpVectors.Reloaded.1.7.1\lib\net46\SharpVectors.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpVectors.Rendering.Gdi, Version=1.7.1.0, Culture=neutral, PublicKeyToken=03902092284347e3, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpVectors.Reloaded.1.7.1\lib\net46\SharpVectors.Rendering.Gdi.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpVectors.Rendering.Wpf, Version=1.7.1.0, Culture=neutral, PublicKeyToken=d0902381100df30e, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpVectors.Reloaded.1.7.1\lib\net46\SharpVectors.Rendering.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpVectors.Runtime.Wpf, Version=1.7.1.0, Culture=neutral, PublicKeyToken=d16e717f0a981fb9, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpVectors.Reloaded.1.7.1\lib\net46\SharpVectors.Runtime.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -75,6 +99,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Login\UserInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -85,6 +113,9 @@
     </Compile>
     <Compile Include="Login\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Login\UserInfo.xaml.cs">
+      <DependentUpon>UserInfo.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -123,6 +154,11 @@
       <Project>{a068fbeb-c996-4264-bab6-48d9c12af493}</Project>
       <Name>BaseClass</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Rosources\img\hands.png" />
+    <Resource Include="Rosources\img\hands.jpg" />
+    <Content Include="Rosources\img\hands.svg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
