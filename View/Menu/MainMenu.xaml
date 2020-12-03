@@ -1,0 +1,56 @@
+﻿<Window x:Class="View.Menu.MainMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:View.Menu"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="MainMenu" Height="650" Width="800" MinHeight="650" MinWidth="1000">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid x:Name="grdMenu" Width="50" Background="#FF5180C7" Grid.Column="0" >
+            <StackPanel>
+                <Grid Height="100" >
+                    <ToggleButton x:Name="btnOpenMenu" VerticalAlignment="Top" HorizontalAlignment="Right" Click="BtnOpenMenu_Click" Width="30" Height="30" Margin=" 0,20,10,0"
+                                  Foreground="white" Style="{DynamicResource MaterialDesignHamburgerToggleButton}" />
+                </Grid>
+                <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal" >
+                            <materialDesign:PackIcon Kind="AccountGroup" Width="25" Height="25" VerticalAlignment="Center" Margin="5" Foreground="White"/>
+                            <TextBlock Text="Afiliados" VerticalAlignment="Center" Margin="10 10" Foreground="White" FontSize="16"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="CashUsd" Width="25" Height="25" VerticalAlignment="Center" Margin="5" Foreground="White"/>
+                            <TextBlock Text="Cuotas" VerticalAlignment="Center" Margin="10 10" Foreground="White" FontSize="16"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="HammerWrench" Width="25" Height="25" VerticalAlignment="Center" Margin="5" Foreground="White"/>
+                            <TextBlock Text="Talleres" VerticalAlignment="Center" Margin="10 10" Foreground="White" FontSize="16"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="AccountEdit" Width="25" Height="25" VerticalAlignment="Center" Margin="5" Foreground="White"/>
+                            <TextBlock Text="Cuentas" VerticalAlignment="Center" Margin="10 10" Foreground="White" FontSize="16"/>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+            </StackPanel>
+        </Grid>
+        <StackPanel Grid.Column="1">
+            <StackPanel x:Name="stpBar" Orientation="Vertical"/>
+            <materialDesign:Card Padding="32" Margin="16">
+                <TextBlock x:Name="txtTest" HorizontalAlignment="Center" Text="Bienvenido" VerticalAlignment="Center"/>
+            </materialDesign:Card>
+        </StackPanel>
+    </Grid>
+</Window>

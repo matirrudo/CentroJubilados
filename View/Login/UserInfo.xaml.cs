@@ -29,6 +29,7 @@ namespace View.Login
 
         private void BtnLogout_Click(object sender, RoutedEventArgs e)
         {
+            LoginService.userLogged = null;
             ShowLoginWindow();
         }
 

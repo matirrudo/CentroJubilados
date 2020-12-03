@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using View.Menu;
 
 namespace View.Login
 {
@@ -29,19 +30,15 @@ namespace View.Login
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
             if (LoginService.Login(txtUsername.Text, txtPassword.Password))
-            {
                 ShowMainMenu();
-            }
             else
-            {
                 MessageBox.Show("Usuario o contraseña incorrectos");
-            }
         }
 
         private void ShowMainMenu()
         {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
+            MainMenu mainMenu = new MainMenu();
+            mainMenu.Show();
             this.Close();
         }
 

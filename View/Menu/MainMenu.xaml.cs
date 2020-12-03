@@ -11,26 +11,27 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 using View.Login;
 
-namespace View
+namespace View.Menu
 {
     /// <summary>
-    /// Lógica de interacción para MainWindow.xaml
+    /// Lógica de interacción para MainMenu.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainMenu : Window
     {
-        public MainWindow()
+        bool menuOpened = false;
+        public MainMenu()
         {
             InitializeComponent();
+            AddBar();
             CenterWindowOnScreen();
             txtTest.Text = LoginService.userLogged.Firstname;
-            AddBar();
         }
-
-        public void AddBar(){
+        
+        public void AddBar()
+        {
             UserInfo userInfo = new UserInfo();
             stpBar.Children.Add(userInfo);
         }
@@ -43,6 +44,20 @@ namespace View
             double windowHeight = this.Height;
             this.Left = (screenWidth / 2) - (windowWidth / 2);
             this.Top = (screenHeight / 2) - (windowHeight / 2);
+        }
+
+        private void BtnOpenMenu_Click(object sender, RoutedEventArgs e)
+        {
+            if (menuOpened)
+            {
+                grdMenu.Width = 50;
+                menuOpened = false;
+            }
+            else
+            {
+                grdMenu.Width = 150;
+                menuOpened = true;
+            }
         }
     }
 }
