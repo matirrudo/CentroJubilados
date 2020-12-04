@@ -14,6 +14,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using View.Login;
+using View.ViewAffiliate;
+using View.ViewLogs;
+using View.ViewNotes;
+using View.ViewPayment;
+using View.ViewUser;
+using View.ViewWorkshop;
 
 namespace View.Menu
 {
@@ -28,7 +34,6 @@ namespace View.Menu
             InitializeComponent();
             AddBar();
             CenterWindowOnScreen();
-            txtTest.Text = LoginService.userLogged.Firstname;
             CreateMenuList();
         }
         
@@ -46,16 +51,26 @@ namespace View.Menu
 
         public void CreateAdminMenuList()
         {
-            menuList.Items.Add(CreateItemMenu("Afiliados", PackIconKind.AccountGroup)); 
-            menuList.Items.Add(CreateItemMenu("Cuetas", PackIconKind.CashUsd));
-            menuList.Items.Add(CreateItemMenu("Talleres", PackIconKind.HammerWrench));
-            menuList.Items.Add(CreateItemMenu("Cuentas", PackIconKind.AccountEdit));
+            menuList.Items.Add(CreateItemMenu("Afiliados", PackIconKind.AccountGroup, new AffiliateList())); 
+            menuList.Items.Add(CreateItemMenu("Cuotas", PackIconKind.CashUsd, new PaymentList()));
+            menuList.Items.Add(CreateItemMenu("Talleres", PackIconKind.HammerWrench, new WorkshopList()));
+            menuList.Items.Add(CreateItemMenu("Notas", PackIconKind.Book, new NoteList()));
+            menuList.Items.Add(CreateItemMenu("Cuentas", PackIconKind.AccountEdit, new UserList()));
+            menuList.Items.Add(CreateItemMenu("Registros", PackIconKind.ClipboardList, new LogList()));
+            menuList.SelectionChanged += new SelectionChangedEventHandler(MenuList_SelectionChanged);
         }
 
-        public ListViewItem CreateItemMenu(String title, PackIconKind icon )
+        private void MenuList_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            ListViewItem listViewItem = new ListViewItem();
+            ListViewItem listViewItem = (ListViewItem)((ListView)sender).SelectedItem;
+            ChangeScreen((UserControl)listViewItem.DataContext);
+        }
+
+        public ListViewItem CreateItemMenu(string title, PackIconKind icon, UserControl userControl)
+        {
             StackPanel stackPanel = new StackPanel();
+            ListViewItem listViewItem = new ListViewItem();
+            listViewItem.DataContext = userControl;
             TextBlock txtTitle = new TextBlock
             {
                 Text = title,
@@ -78,6 +93,12 @@ namespace View.Menu
             stackPanel.Children.Add(txtTitle);
             listViewItem.Content = stackPanel;
             return listViewItem;
+        }
+
+        private void ChangeScreen(UserControl userControl)
+        {
+            stpViewScreen.Children.Clear();
+            stpViewScreen.Children.Add(userControl);
         }
 
         private void CenterWindowOnScreen()

@@ -11,8 +11,8 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid x:Name="grdMenu" Width="50" Background="#FF5180C7" Grid.Column="0" >
+        </Grid.ColumnDefinitions> 
+        <Grid x:Name="grdMenu" Width="50" Background="#FF245195" Grid.Column="0" >
             <StackPanel>
                 <Grid Height="100" >
                     <ToggleButton x:Name="btnOpenMenu" VerticalAlignment="Top" HorizontalAlignment="Right" Click="BtnOpenMenu_Click" Width="30" Height="30" Margin=" 0,20,10,0"
@@ -23,9 +23,7 @@
         </Grid>
         <StackPanel Grid.Column="1">
             <StackPanel x:Name="stpBar" Orientation="Vertical"/>
-            <materialDesign:Card Padding="32" Margin="16">
-                <TextBlock x:Name="txtTest" HorizontalAlignment="Center" Text="Bienvenido" VerticalAlignment="Center"/>
-            </materialDesign:Card>
+            <StackPanel x:Name="stpViewScreen" Orientation="Vertical"/>
         </StackPanel>
     </Grid>
 </Window>

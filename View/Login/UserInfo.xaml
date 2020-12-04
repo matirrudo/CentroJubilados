@@ -6,7 +6,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <materialDesign:ColorZone Mode="PrimaryDark" Padding="16" Height="69" Background="#FF245195">
+    <materialDesign:ColorZone Mode="PrimaryDark" Padding="16" Height="69" Background="#FF5180C7">
         <DockPanel>
             <StackPanel Orientation="Horizontal" Width="264">
                 <materialDesign:PackIcon Kind="AccountOutline" Height="25" Width="25" Margin="20 6 0 0" />
