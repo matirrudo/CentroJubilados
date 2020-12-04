@@ -18,32 +18,7 @@
                     <ToggleButton x:Name="btnOpenMenu" VerticalAlignment="Top" HorizontalAlignment="Right" Click="BtnOpenMenu_Click" Width="30" Height="30" Margin=" 0,20,10,0"
                                   Foreground="white" Style="{DynamicResource MaterialDesignHamburgerToggleButton}" />
                 </Grid>
-                <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                    <ListViewItem Height="60">
-                        <StackPanel Orientation="Horizontal" >
-                            <materialDesign:PackIcon Kind="AccountGroup" Width="25" Height="25" VerticalAlignment="Center" Margin="5" Foreground="White"/>
-                            <TextBlock Text="Afiliados" VerticalAlignment="Center" Margin="10 10" Foreground="White" FontSize="16"/>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem Height="60">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="CashUsd" Width="25" Height="25" VerticalAlignment="Center" Margin="5" Foreground="White"/>
-                            <TextBlock Text="Cuotas" VerticalAlignment="Center" Margin="10 10" Foreground="White" FontSize="16"/>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem Height="60">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="HammerWrench" Width="25" Height="25" VerticalAlignment="Center" Margin="5" Foreground="White"/>
-                            <TextBlock Text="Talleres" VerticalAlignment="Center" Margin="10 10" Foreground="White" FontSize="16"/>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem Height="60">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="AccountEdit" Width="25" Height="25" VerticalAlignment="Center" Margin="5" Foreground="White"/>
-                            <TextBlock Text="Cuentas" VerticalAlignment="Center" Margin="10 10" Foreground="White" FontSize="16"/>
-                        </StackPanel>
-                    </ListViewItem>
-                </ListView>
+                <ListView x:Name="menuList" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
             </StackPanel>
         </Grid>
         <StackPanel Grid.Column="1">

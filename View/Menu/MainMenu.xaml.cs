@@ -1,4 +1,5 @@
 ﻿using BaseClass.Services;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,12 +29,55 @@ namespace View.Menu
             AddBar();
             CenterWindowOnScreen();
             txtTest.Text = LoginService.userLogged.Firstname;
+            CreateMenuList();
         }
         
         public void AddBar()
         {
             UserInfo userInfo = new UserInfo();
             stpBar.Children.Add(userInfo);
+        }
+
+        public void CreateMenuList()
+        {
+            if (LoginService.userLogged.Rol.Name.Equals("administrador"))
+                CreateAdminMenuList();
+        }
+
+        public void CreateAdminMenuList()
+        {
+            menuList.Items.Add(CreateItemMenu("Afiliados", PackIconKind.AccountGroup)); 
+            menuList.Items.Add(CreateItemMenu("Cuetas", PackIconKind.CashUsd));
+            menuList.Items.Add(CreateItemMenu("Talleres", PackIconKind.HammerWrench));
+            menuList.Items.Add(CreateItemMenu("Cuentas", PackIconKind.AccountEdit));
+        }
+
+        public ListViewItem CreateItemMenu(String title, PackIconKind icon )
+        {
+            ListViewItem listViewItem = new ListViewItem();
+            StackPanel stackPanel = new StackPanel();
+            TextBlock txtTitle = new TextBlock
+            {
+                Text = title,
+                VerticalAlignment = VerticalAlignment.Center,
+                Margin = new Thickness(10),
+                Foreground = Brushes.White,
+                FontSize = 16,
+            };
+            PackIcon packIcon = new PackIcon
+            {
+                Kind = icon,
+                Width = 25,
+                Height = 25,
+                VerticalAlignment = VerticalAlignment.Center,
+                Margin = new Thickness(5),
+                Foreground = Brushes.White
+            };
+            stackPanel.Orientation = Orientation.Horizontal;
+            stackPanel.Children.Add(packIcon);
+            stackPanel.Children.Add(txtTitle);
+            listViewItem.Content = stackPanel;
+            return listViewItem;
         }
 
         private void CenterWindowOnScreen()
