@@ -9,8 +9,8 @@
     <materialDesign:ColorZone Mode="PrimaryDark" Padding="16" Height="69" Background="#FF5180C7">
         <DockPanel>
             <StackPanel Orientation="Horizontal" Width="264">
-                <materialDesign:PackIcon Kind="AccountOutline" Height="25" Width="25" Margin="20 6 0 0" />
-                <TextBlock Name="txtUser" VerticalAlignment="Center" Margin="5 0 0 0" />
+                <materialDesign:PackIcon Kind="AccountOutline" Height="25" Width="25" Margin="20 6 0 0" Foreground="White"/>
+                <TextBlock Name="txtUser" VerticalAlignment="Center" Margin="5 0 0 0" Foreground="White"/>
             </StackPanel>
             <Button x:Name="btnLogout" Width="120" HorizontalAlignment="Right" Content="Salir" Margin="0,2,0,3" Background="#FF1956B4" Foreground="White" BorderBrush="#FF1956B4"
                     Click="BtnLogout_Click"/>

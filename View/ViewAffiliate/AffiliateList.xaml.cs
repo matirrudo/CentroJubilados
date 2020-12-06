@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BaseClass.DataAccess;
+using BaseClass.Models;
+using BaseClass.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +23,24 @@ namespace View.ViewAffiliate
     /// </summary>
     public partial class AffiliateList : UserControl
     {
+        List<Affiliate> affiliateList;
+
         public AffiliateList()
         {
             InitializeComponent();
+            LoadAffiliates();
+        }
+
+        private void LoadAffiliates()
+        {
+            affiliateList = AffiliateService.GetAll();
+            dgAffiliates.ItemsSource = affiliateList;
+        }
+
+        private void BtnNuevo_Click(object sender, RoutedEventArgs e)
+        {
+            NewAffiliate newAffiliate = new NewAffiliate();
+            newAffiliate.Show();
         }
     }
 }

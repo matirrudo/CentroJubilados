@@ -13,11 +13,11 @@ namespace BaseClass.Models
         }
 
         public virtual DbSet<Rol> Rol { get; set; }
-        public virtual DbSet<Table> Table { get; set; }
         public virtual DbSet<TypeOfAffiliate> TypeOfAffiliate { get; set; }
+        public virtual DbSet<User> User { get; set; }
         public virtual DbSet<Workshop> Workshop { get; set; }
         public virtual DbSet<Affiliate> Affiliate { get; set; }
-        public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<Setting> Setting { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -38,6 +38,22 @@ namespace BaseClass.Models
                 .HasMany(e => e.Affiliate)
                 .WithRequired(e => e.TypeOfAffiliate)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<User>()
+                .Property(e => e.Username)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<User>()
+                .Property(e => e.Password)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<User>()
+                .Property(e => e.Firstname)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<User>()
+                .Property(e => e.Lastname)
+                .IsUnicode(false);
 
             modelBuilder.Entity<Workshop>()
                 .Property(e => e.Name)
@@ -63,21 +79,13 @@ namespace BaseClass.Models
                 .Property(e => e.PhoneNumber)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<User>()
-                .Property(e => e.Username)
-                .IsUnicode(false);
+            modelBuilder.Entity<Setting>()
+                .Property(e => e.ContributionPrice)
+                .HasPrecision(18, 0);
 
-            modelBuilder.Entity<User>()
-                .Property(e => e.Password)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<User>()
-                .Property(e => e.Firstname)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<User>()
-                .Property(e => e.Lastname)
-                .IsUnicode(false);
+            modelBuilder.Entity<Setting>()
+                .Property(e => e.MonthContribution)
+                .IsFixedLength();
         }
     }
 }

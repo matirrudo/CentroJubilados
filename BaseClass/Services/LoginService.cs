@@ -10,6 +10,7 @@ namespace BaseClass.Services
 {
     public static class LoginService
     {
+        //TODO: Agregar Logs en cada accion
         public static User userLogged;
 
         public static bool Login(string username, string password)

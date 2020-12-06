@@ -7,7 +7,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
         mc:Ignorable="d"
-        Title="Login" Height="580" Width="375" MinHeight="580" MinWidth="375" Icon="/Rosources/img/hands.png" >
+        Title="Login" Height="580" Width="375" MinHeight="580" MinWidth="375" Icon="/Rosources/img/hands.png" WindowStartupLocation="CenterScreen" >
     <StackPanel VerticalAlignment="Center">
         <Image Width="250" Margin="0,0,0,0" Source="/Rosources/img/hands.png"></Image>
         <TextBlock HorizontalAlignment="Center" Height="26" Margin="0,20,0,10" VerticalAlignment="Top" Width="250" FontSize="20" FontWeight="Bold" TextAlignment="Center">Inicia sesión con tu cuenta</TextBlock>

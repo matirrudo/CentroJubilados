@@ -24,7 +24,6 @@ namespace View.Login
         public Login()
         {
             InitializeComponent();
-            CenterWindowOnScreen();
         }
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
@@ -40,16 +39,6 @@ namespace View.Login
             MainMenu mainMenu = new MainMenu();
             mainMenu.Show();
             this.Close();
-        }
-
-        private void CenterWindowOnScreen()
-        {
-            double screenWidth = SystemParameters.PrimaryScreenWidth;
-            double screenHeight = SystemParameters.PrimaryScreenHeight;
-            double windowWidth = this.Width;
-            double windowHeight = this.Height;
-            this.Left = (screenWidth / 2) - (windowWidth / 2);
-            this.Top = (screenHeight / 2) - (windowHeight / 2);
         }
     }
 }

@@ -33,8 +33,8 @@ namespace View.Menu
         {
             InitializeComponent();
             AddBar();
-            CenterWindowOnScreen();
             CreateMenuList();
+            CenterWindowOnScreen();
         }
         
         public void AddBar()

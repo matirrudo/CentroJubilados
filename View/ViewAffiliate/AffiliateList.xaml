@@ -6,10 +6,41 @@
              xmlns:local="clr-namespace:View.ViewAffiliate"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="1100">
     <StackPanel>
-        <materialDesign:Card Padding="32" Margin="16">
-            <TextBlock x:Name="txtTest" HorizontalAlignment="Center" Text="Bienvenido a Afiliados" VerticalAlignment="Center"/>
-        </materialDesign:Card>
+        <TextBlock x:Name="txtTest" HorizontalAlignment="Center" Text="Registro de Afiliados" VerticalAlignment="Center" Margin="5" FontSize="24" />
+        <Button x:Name="btnNuevo" Content="Nuevo Afiliado" Width="130" Margin="10 5" HorizontalAlignment="Right" Background="Green" BorderBrush="Green" Click="BtnNuevo_Click"/>
+        <DataGrid x:Name="dgAffiliates" IsReadOnly="True" AutoGenerateColumns="False" Margin="10 0" BorderBrush="#89000000" BorderThickness="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Apellido" Binding="{Binding Lastname}"/>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding Firstaname}"/>
+                <DataGridTextColumn Header="DNI" Binding="{Binding DNI}"/>
+                <DataGridTextColumn Header="N° de Beneficio" Binding="{Binding BenefitNumber}"/>
+                <DataGridTextColumn Header="Nacimiento" Binding="{Binding Birthdate}"/>
+                <DataGridTextColumn Header="Direccion" Binding="{Binding Address}"/>
+                <DataGridTextColumn Header="Fecha de Registro" Binding="{Binding RegistrationDate}"/>
+                <DataGridTextColumn Header="Activo" Binding="{Binding Active}"/>
+                <DataGridTextColumn Header="Tipo de Afiliado" Binding="{Binding TypeOfAffiliate.Name}"/>
+                <DataGridTemplateColumn >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <materialDesign:PopupBox  PlacementMode="BottomAndAlignRightEdges" UnfurlOrientation="Horizontal">
+                                <ListBox x:Name="listBoxItems">
+                                    <ListBoxItem x:Name="itemUpdate" >
+                                        Editar
+                                    </ListBoxItem>
+                                    <ListBoxItem x:Name="itemDelete">
+                                        Eliminar
+                                    </ListBoxItem>
+                                </ListBox>
+                            </materialDesign:PopupBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+            
+            
+        </DataGrid>
     </StackPanel>
 </UserControl>
