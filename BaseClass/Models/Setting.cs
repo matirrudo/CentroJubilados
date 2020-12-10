@@ -9,7 +9,6 @@ namespace BaseClass.Models
     [Table("Setting")]
     public partial class Setting
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 
         public int? UserId { get; set; }

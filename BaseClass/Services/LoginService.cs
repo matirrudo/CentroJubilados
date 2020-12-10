@@ -12,12 +12,11 @@ namespace BaseClass.Services
     {
         //TODO: Agregar Logs en cada accion
         public static User userLogged;
+        private static WorkUser wu = new WorkUser();
 
-        public static bool Login(string username, string password)
+        public static bool Login(string username, string password, bool remember)
         {
-            WorkUser wu = new WorkUser();
             User user = wu.SearchUserByUsername(username);
-
             if (user is null)
                 return false;
             else
@@ -25,11 +24,29 @@ namespace BaseClass.Services
                 if (user.Password.Equals(password))
                 {
                     userLogged = user;
+                    if (remember)
+                        RememberUser(user);
                     return true;
                 }
                 else
                     return false;
             }
         }
+
+        private static void RememberUser(User user)
+        {
+            Setting setting = SettingService.GetSetting();
+            setting.UserId = user.Id;
+            SettingService.UpdateSetting(setting);
+        }
+
+        public static void Logout()
+        {
+            userLogged = null;
+            Setting setting = SettingService.GetSetting();
+            setting.UserId = null;
+            SettingService.UpdateSetting(setting);
+        }
+
     }
 }

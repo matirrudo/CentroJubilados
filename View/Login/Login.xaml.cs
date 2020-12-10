@@ -1,4 +1,5 @@
-﻿using BaseClass.Services;
+﻿using BaseClass.Models;
+using BaseClass.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,12 +25,15 @@ namespace View.Login
         public Login()
         {
             InitializeComponent();
+            VerifyRemember();
         }
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
-            if (LoginService.Login(txtUsername.Text, txtPassword.Password))
+            if (LoginService.Login(txtUsername.Text, txtPassword.Password,(bool) cbRemember.IsChecked))
+            {
                 ShowMainMenu();
+            }
             else
                 MessageBox.Show("Usuario o contraseña incorrectos");
         }
@@ -39,6 +43,16 @@ namespace View.Login
             MainMenu mainMenu = new MainMenu();
             mainMenu.Show();
             this.Close();
+        }
+
+        private void VerifyRemember()
+        {
+            User user = SettingService.GetSetting().User;
+            if(!(user is null))
+            {
+                LoginService.userLogged = user;
+                ShowMainMenu();
+            }
         }
     }
 }

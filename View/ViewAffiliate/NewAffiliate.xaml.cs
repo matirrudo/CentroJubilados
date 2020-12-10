@@ -1,4 +1,5 @@
-﻿using BaseClass.Models;
+﻿using BaseClass.DataAccess;
+using BaseClass.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +27,7 @@ namespace View.ViewAffiliate
         {
             affiliate = new Affiliate();
             InitializeComponent();
-
+            LoadTypesOfAffiliado();
         }
 
         private void BtnCancel_Click(object sender, RoutedEventArgs e)
@@ -39,6 +40,12 @@ namespace View.ViewAffiliate
             affiliate.Firstaname = txtNombre.Text;
             MessageBox.Show("OBJ: " + affiliate.Firstaname);
             this.Close();
+        }
+
+        private void LoadTypesOfAffiliado()
+        {
+            WorkTypeOfAffiliate wa = new WorkTypeOfAffiliate();
+            cmbTypeOfAffiliate.ItemsSource = wa.GetAll();
         }
     }
 }

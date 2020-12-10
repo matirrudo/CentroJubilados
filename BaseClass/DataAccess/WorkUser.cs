@@ -33,7 +33,7 @@ namespace BaseClass.DataAccess
 
         public override List<User> GetAll()
         {
-            return em.User.ToList<User>();
+            return em.User.ToList();
         }
 
         public override User GetEntity(int id)

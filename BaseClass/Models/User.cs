@@ -9,22 +9,21 @@ namespace BaseClass.Models
     [Table("User")]
     public partial class User
     {
-        [Key]
-        [Column(Order = 0)]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public User()
+        {
+            Setting = new HashSet<Setting>();
+        }
+
         public int Id { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int RolId { get; set; }
 
-        [Key]
-        [Column(Order = 2)]
+        [Required]
         [StringLength(20)]
         public string Username { get; set; }
 
-        [Key]
-        [Column(Order = 3)]
+        [Required]
         [StringLength(20)]
         public string Password { get; set; }
 
@@ -35,5 +34,8 @@ namespace BaseClass.Models
         public string Lastname { get; set; }
 
         public virtual Rol Rol { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Setting> Setting { get; set; }
     }
 }
