@@ -10,7 +10,7 @@
     <StackPanel>
         <TextBlock x:Name="txtTest" HorizontalAlignment="Center" Text="Registro de Afiliados" VerticalAlignment="Center" Margin="5" FontSize="24" />
         <Button x:Name="btnNuevo" Content="Nuevo Afiliado" Width="130" Margin="10 5" HorizontalAlignment="Right" Background="Green" BorderBrush="Green" Click="BtnNuevo_Click"/>
-        <DataGrid x:Name="dgAffiliates" IsReadOnly="True" AutoGenerateColumns="False" Margin="10 0" BorderBrush="#89000000" BorderThickness="1">
+        <DataGrid x:Name="dgAffiliates" IsReadOnly="True" AutoGenerateColumns="False" ItemsSource="{Binding Path=AffiliateLista, Mode=TwoWay}" Margin="10 0" BorderBrush="#89000000" BorderThickness="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Apellido" Binding="{Binding Lastname}"/>

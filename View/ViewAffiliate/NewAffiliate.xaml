@@ -6,8 +6,8 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:View.ViewAffiliate"
         mc:Ignorable="d"
-        Title="NewAffiliate" Height="480" Width="325" MaxHeight="480" MaxWidth="325" MinHeight="480" MinWidth="325"
-        WindowStartupLocation="CenterScreen" WindowStyle="None" Topmost="True">
+        Title="NewAffiliate" Height="530" Width="325" MaxHeight="530" MaxWidth="325" MinHeight="530" MinWidth="325"
+        WindowStartupLocation="CenterScreen" WindowStyle="None">
     <StackPanel>
         <materialDesign:ColorZone Mode="PrimaryDark" Padding="6" Background="#FF1956B4">
             <StackPanel Orientation="Horizontal" >
@@ -23,7 +23,7 @@
                 <TextBox x:Name="txtNombre" MaxLength="50" materialDesign:HintAssist.Hint="*Nombre" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
             </StackPanel>
             <StackPanel  HorizontalAlignment="Stretch" >
-                <TextBox x:Name="txtTitulo" MaxLength="50" materialDesign:HintAssist.Hint="*Apellido" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center">
+                <TextBox x:Name="txtApellido" MaxLength="50" materialDesign:HintAssist.Hint="*Apellido" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center">
                     <TextBox.Text>
                         <Binding Path="txtTitulo" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" ValidatesOnDataErrors="True"/>
                     </TextBox.Text>
@@ -44,7 +44,7 @@
                 </TextBox>
             </StackPanel>
             <StackPanel>
-                <DatePicker  materialDesign:HintAssist.Hint="*Fecha de Nacimiento      *dd/mm/aaaa" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                <DatePicker x:Name="dtpNacimiento" materialDesign:HintAssist.Hint="*Fecha de Nacimiento      *dd/mm/aaaa" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
             </StackPanel>
             <StackPanel  HorizontalAlignment="Stretch">
                 <TextBox x:Name="txtDireccion" MaxLength="50" materialDesign:HintAssist.Hint="*Dirección" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center">
@@ -54,11 +54,18 @@
                 </TextBox>
             </StackPanel>
             <StackPanel  HorizontalAlignment="Stretch">
+                <TextBox x:Name="txtTelefono" MaxLength="50" materialDesign:HintAssist.Hint="Telefono" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center">
+                    <TextBox.Text>
+                        <Binding Path="txtTelefono"/>
+                    </TextBox.Text>
+                </TextBox>
+            </StackPanel>
+            <StackPanel  HorizontalAlignment="Stretch">
                 <ComboBox x:Name="cmbTypeOfAffiliate" Text="{Binding TypeOfAffiliate.Name}" DisplayMemberPath="Name" Cursor="Hand" materialDesign:HintAssist.Hint="*Tipo de Afiliado" Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
             </StackPanel>
             <StackPanel  HorizontalAlignment="Stretch" Margin="0 20" Orientation="Horizontal">
                 <TextBlock Text="*Activo" Margin="0 0 10 0" Foreground="Gray"/>
-                <ToggleButton Style="{StaticResource MaterialDesignSwitchDarkToggleButton}" ToolTip="Activo" IsChecked="False" />
+                <ToggleButton x:Name="tgActivo" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}" ToolTip="Activo" IsChecked="False" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button x:Name="btnGuardar" Content="Guardar" Margin="10" Background="#FF1956B4" BorderBrush="#FF1956B4" Click="BtnGuardar_Click"/>

@@ -3,7 +3,9 @@ using BaseClass.Models;
 using BaseClass.Services;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,26 +23,48 @@ namespace View.ViewAffiliate
     /// <summary>
     /// Lógica de interacción para AffiliateList.xaml
     /// </summary>
-    public partial class AffiliateList : UserControl
+    public partial class AffiliateList : UserControl,INotifyPropertyChanged
     {
-        List<Affiliate> affiliateList;
+        private List<Affiliate> affiliateLista;
+        public List<Affiliate> AffiliateLista
+        {
+            get
+            {
+                return affiliateLista;
+            }
+            set
+            {
+                if (affiliateLista != value)
+                {
+                    affiliateLista = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
         public AffiliateList()
         {
             InitializeComponent();
+            DataContext = this;
             LoadAffiliates();
         }
 
-        private void LoadAffiliates()
+        public void LoadAffiliates()
         {
-            affiliateList = AffiliateService.GetAll();
-            dgAffiliates.ItemsSource = affiliateList;
+            AffiliateLista = AffiliateService.GetAll();
         }
 
         private void BtnNuevo_Click(object sender, RoutedEventArgs e)
         {
             NewAffiliate newAffiliate = new NewAffiliate();
+            newAffiliate.DataContext = this;
             newAffiliate.Show();
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

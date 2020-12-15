@@ -12,15 +12,39 @@ namespace BaseClass.Models
         {
         }
 
+        public virtual DbSet<Affiliate> Affiliate { get; set; }
         public virtual DbSet<Rol> Rol { get; set; }
         public virtual DbSet<TypeOfAffiliate> TypeOfAffiliate { get; set; }
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<Workshop> Workshop { get; set; }
-        public virtual DbSet<Affiliate> Affiliate { get; set; }
         public virtual DbSet<Setting> Setting { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Affiliate>()
+                .Property(e => e.Firstaname)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Affiliate>()
+                .Property(e => e.Lastname)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Affiliate>()
+                .Property(e => e.DNI)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Affiliate>()
+                .Property(e => e.BenefitNumber)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Affiliate>()
+                .Property(e => e.Address)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Affiliate>()
+                .Property(e => e.PhoneNumber)
+                .IsUnicode(false);
+
             modelBuilder.Entity<Rol>()
                 .Property(e => e.Name)
                 .IsUnicode(false);
@@ -62,22 +86,6 @@ namespace BaseClass.Models
             modelBuilder.Entity<Workshop>()
                 .Property(e => e.Description)
                 .IsFixedLength();
-
-            modelBuilder.Entity<Affiliate>()
-                .Property(e => e.Firstaname)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Affiliate>()
-                .Property(e => e.Lastname)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Affiliate>()
-                .Property(e => e.Address)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Affiliate>()
-                .Property(e => e.PhoneNumber)
-                .IsUnicode(false);
 
             modelBuilder.Entity<Setting>()
                 .Property(e => e.ContributionPrice)

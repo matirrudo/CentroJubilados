@@ -1,5 +1,6 @@
 ﻿using BaseClass.DataAccess;
 using BaseClass.Models;
+using BaseClass.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,9 +38,23 @@ namespace View.ViewAffiliate
 
         private void BtnGuardar_Click(object sender, RoutedEventArgs e)
         {
-            affiliate.Firstaname = txtNombre.Text;
-            MessageBox.Show("OBJ: " + affiliate.Firstaname);
-            this.Close();
+            MessageBoxResult result = MessageBox.Show("Agregar nuevo Afiliado: " + txtApellido.Text + " " + txtNombre.Text + " DNI: " + txtDni.Text , "Confirmar nuevo Afiliado", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+            if (result.Equals(MessageBoxResult.OK)){
+                affiliate.Firstaname = txtNombre.Text;
+                affiliate.Lastname = txtApellido.Text;
+                affiliate.DNI = txtDni.Text;
+                affiliate.BenefitNumber = txtBeneficiario.Text;
+                affiliate.Birthdate = (DateTime)dtpNacimiento.SelectedDate;
+                affiliate.Address = txtDireccion.Text;
+                affiliate.PhoneNumber = txtTelefono.Text;
+                affiliate.TypeOfAffiliateId = (cmbTypeOfAffiliate.SelectedItem as TypeOfAffiliate).Id;
+                affiliate.Active = (bool)tgActivo.IsChecked;
+                affiliate.RegistrationDate = DateTime.Now; 
+                AffiliateService.Add(affiliate);
+                AffiliateList affiliateList = this.DataContext as AffiliateList;
+                affiliateList.LoadAffiliates();
+                this.Close();
+            }
         }
 
         private void LoadTypesOfAffiliado()
