@@ -31,7 +31,7 @@
         </CheckBox>
 
         <!--Iniciar sesion-->
-        <Button x:Name="btnLogin" Content="Entrar" HorizontalAlignment="Center" Height="40" Margin="10" VerticalAlignment="Top" Width="227" Background="#FF1956B4" Foreground="White" BorderBrush="#FF1956B4" Click="BtnLogin_Click" />
+        <Button x:Name="btnLogin" Content="Iniciar Sesion" HorizontalAlignment="Center" Height="40" Margin="10" VerticalAlignment="Top" Width="227" Background="#FF1956B4" Foreground="White" BorderBrush="#FF1956B4" Click="BtnLogin_Click" />
         <TextBlock HorizontalAlignment="Center" Margin="5" TextWrapping="Wrap" VerticalAlignment="Top" Width="227" TextAlignment="Center" FontStyle="Italic" Foreground="DimGray">¿Necesita ayuda?</TextBlock>
         
     </StackPanel>

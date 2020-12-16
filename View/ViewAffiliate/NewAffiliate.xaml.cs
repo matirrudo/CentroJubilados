@@ -57,7 +57,7 @@ namespace View.ViewAffiliate
                 AffiliateList affiliateList = this.DataContext as AffiliateList;
                 affiliateList.LoadAffiliates();
                 this.Close();
-                ShortNotifications.ShowDialog("¡Se registro exitosamente!");
+                ShortNotifications.ShowDialog("¡Afiliado registrado exitosamente!");
             }
         }
 

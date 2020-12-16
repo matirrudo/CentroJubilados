@@ -6,20 +6,30 @@
              xmlns:local="clr-namespace:View.ViewAffiliate"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="1100">
-    <StackPanel>
-        <TextBlock x:Name="txtTest" HorizontalAlignment="Center" Text="Registro de Afiliados" VerticalAlignment="Center" Margin="5" FontSize="24" />
-        <Button x:Name="btnNuevo" Content="Nuevo Afiliado" Width="130" Margin="10 5" HorizontalAlignment="Right" Background="Green" BorderBrush="Green" Click="BtnNuevo_Click"/>
-        <DataGrid x:Name="dgAffiliates" IsReadOnly="True" AutoGenerateColumns="False" ItemsSource="{Binding Path=AffiliateLista, Mode=TwoWay}" Margin="10 0" BorderBrush="#89000000" BorderThickness="1">
+             d:DesignHeight="450" d:DesignWidth="1000">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Registro de Afiliados" FontSize="24" HorizontalAlignment="Center" Grid.Row="0"/>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <TextBox x:Name="txtBuscar" HorizontalAlignment="Center" Padding="-2,-7,0,-10" Height="30" Margin="10" TextWrapping="Wrap"  VerticalAlignment="Top" Width="227"
+                 Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" materialDesign:HintAssist.Hint="Buscar"/>
+            <Button x:Name="btnNuevo" Content="Nuevo Afiliado" Width="130" Margin="12 5" HorizontalAlignment="Right" Background="Green" BorderBrush="Green" Click="BtnNuevo_Click"/>
+        </StackPanel>
+        <DataGrid x:Name="dgAffiliates" Grid.Row="2" IsReadOnly="True" AutoGenerateColumns="False" Margin="10 0" ItemsSource="{Binding Path=AffiliateLista, Mode=TwoWay}" BorderBrush="#89000000" BorderThickness="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Apellido" Binding="{Binding Lastname}"/>
                 <DataGridTextColumn Header="Nombre" Binding="{Binding Firstaname}"/>
                 <DataGridTextColumn Header="DNI" Binding="{Binding DNI}"/>
                 <DataGridTextColumn Header="N° de Beneficio" Binding="{Binding BenefitNumber}"/>
-                <DataGridTextColumn Header="Nacimiento" Binding="{Binding Birthdate}"/>
+                <DataGridTextColumn Header="Nacimiento" Binding="{Binding Birthdate, StringFormat='dd-MM-yyyy'}"/>
                 <DataGridTextColumn Header="Direccion" Binding="{Binding Address}"/>
-                <DataGridTextColumn Header="Fecha de Registro" Binding="{Binding RegistrationDate}"/>
+                <DataGridTextColumn Header="Fecha de Registro" Binding="{Binding RegistrationDate, StringFormat='dd-MM-yyyy'}"/>
                 <DataGridTextColumn Header="Activo" Binding="{Binding Active}"/>
                 <DataGridTextColumn Header="Tipo de Afiliado" Binding="{Binding TypeOfAffiliate.Name}"/>
                 <DataGridTemplateColumn >
@@ -39,8 +49,16 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
-            
-            
         </DataGrid>
-    </StackPanel>
+        <StackPanel Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Center" Margin="12 0 0 10">
+            <TextBlock Text="Afiliados totales: " VerticalAlignment="Center"/>
+            <TextBlock x:Name="txtTotal" Text="0" VerticalAlignment="Center"/>
+            <TextBlock Text="    Activos: " VerticalAlignment="Center"/>
+            <TextBlock x:Name="txtActivos" Text="0" VerticalAlignment="Center"/>
+            <TextBlock Text="    Afiliados comunes: " VerticalAlignment="Center"/>
+            <TextBlock x:Name="txtComunes" Text="0" VerticalAlignment="Center"/>
+            <TextBlock Text="    Afiliados beneficiarios: " VerticalAlignment="Center"/>
+            <TextBlock x:Name="txtBeneficiarios" Text="0" VerticalAlignment="Center"/>
+        </StackPanel>
+    </Grid>
 </UserControl>

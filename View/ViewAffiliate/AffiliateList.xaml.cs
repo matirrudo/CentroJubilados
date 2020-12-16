@@ -52,6 +52,20 @@ namespace View.ViewAffiliate
         public void LoadAffiliates()
         {
             AffiliateLista = AffiliateService.GetAll();
+            CalculateStadistics();
+        }
+
+        private void CalculateStadistics()
+        {
+            int total, activos, comunes, beneficiarios;
+            total = affiliateLista.Count;
+            activos = affiliateLista.Where(a => a.Active == true).Count();
+            comunes = affiliateLista.Where(a => a.TypeOfAffiliateId == 1).Count();
+            beneficiarios = affiliateLista.Where(a => a.TypeOfAffiliateId == 2).Count();
+            txtTotal.Text = total.ToString();
+            txtActivos.Text = activos.ToString();
+            txtComunes.Text = comunes.ToString();
+            txtBeneficiarios.Text = beneficiarios.ToString();
         }
 
         private void BtnNuevo_Click(object sender, RoutedEventArgs e)

@@ -21,9 +21,13 @@
                 <ListView x:Name="menuList" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
             </StackPanel>
         </Grid>
-        <StackPanel Grid.Column="1">
-            <StackPanel x:Name="stpBar" Orientation="Vertical"/>
-            <StackPanel x:Name="stpViewScreen" Orientation="Vertical"/>
-        </StackPanel>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel x:Name="stpBar" Orientation="Vertical" Grid.Row="0"/>
+            <Grid x:Name="stpViewScreen" Grid.Row="1"/>
+        </Grid>
     </Grid>
 </Window>
