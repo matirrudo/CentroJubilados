@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using View.Messages;
 
 namespace View.ViewAffiliate
 {
@@ -38,8 +39,10 @@ namespace View.ViewAffiliate
 
         private void BtnGuardar_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Agregar nuevo Afiliado: " + txtApellido.Text + " " + txtNombre.Text + " DNI: " + txtDni.Text , "Confirmar nuevo Afiliado", MessageBoxButton.OKCancel, MessageBoxImage.Question);
-            if (result.Equals(MessageBoxResult.OK)){
+            var result = MessagesBox.ShowDialog("Se registrara al afiliado: " + txtNombre.Text + " " + txtApellido.Text, MessagesBox.Buttons.Yes_No);
+
+            if (result == "1")
+            {
                 affiliate.Firstaname = txtNombre.Text;
                 affiliate.Lastname = txtApellido.Text;
                 affiliate.DNI = txtDni.Text;
@@ -49,11 +52,12 @@ namespace View.ViewAffiliate
                 affiliate.PhoneNumber = txtTelefono.Text;
                 affiliate.TypeOfAffiliateId = (cmbTypeOfAffiliate.SelectedItem as TypeOfAffiliate).Id;
                 affiliate.Active = (bool)tgActivo.IsChecked;
-                affiliate.RegistrationDate = DateTime.Now; 
+                affiliate.RegistrationDate = DateTime.Now;
                 AffiliateService.Add(affiliate);
                 AffiliateList affiliateList = this.DataContext as AffiliateList;
                 affiliateList.LoadAffiliates();
                 this.Close();
+                ShortNotifications.ShowDialog("¡Se registro exitosamente!");
             }
         }
 
