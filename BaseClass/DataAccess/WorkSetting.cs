@@ -38,9 +38,9 @@ namespace BaseClass.DataAccess
             if (setting != null)
             {
                 setting.UserId = entity.UserId;
-                setting.ContributionPrice = entity.ContributionPrice;
-                setting.MonthContribution = entity.MonthContribution;
-                setting.YearContribution = entity.YearContribution;
+                setting.SubscriptionPrice = entity.SubscriptionPrice;
+                setting.SubscriptionMonth = entity.SubscriptionMonth;
+                setting.SubscriptionYear = entity.SubscriptionYear;
                 em.SaveChanges();
             }
             else

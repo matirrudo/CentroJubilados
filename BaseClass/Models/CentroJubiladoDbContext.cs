@@ -13,7 +13,9 @@ namespace BaseClass.Models
         }
 
         public virtual DbSet<Affiliate> Affiliate { get; set; }
+        public virtual DbSet<Log> Log { get; set; }
         public virtual DbSet<Rol> Rol { get; set; }
+        public virtual DbSet<Subscription> Subscription { get; set; }
         public virtual DbSet<TypeOfAffiliate> TypeOfAffiliate { get; set; }
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<Workshop> Workshop { get; set; }
@@ -22,7 +24,7 @@ namespace BaseClass.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Affiliate>()
-                .Property(e => e.Firstaname)
+                .Property(e => e.Firstname)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Affiliate>()
@@ -45,6 +47,24 @@ namespace BaseClass.Models
                 .Property(e => e.PhoneNumber)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<Affiliate>()
+                .HasMany(e => e.Subscription)
+                .WithRequired(e => e.Affiliate)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Affiliate>()
+                .HasMany(e => e.Workshop)
+                .WithMany(e => e.Affiliate)
+                .Map(m => m.ToTable("AffiliateWorkshop").MapLeftKey("AffiliateId").MapRightKey("WorkshopId"));
+
+            modelBuilder.Entity<Log>()
+                .Property(e => e.Title)
+                .IsFixedLength();
+
+            modelBuilder.Entity<Log>()
+                .Property(e => e.Description)
+                .IsFixedLength();
+
             modelBuilder.Entity<Rol>()
                 .Property(e => e.Name)
                 .IsUnicode(false);
@@ -53,6 +73,14 @@ namespace BaseClass.Models
                 .HasMany(e => e.User)
                 .WithRequired(e => e.Rol)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Subscription>()
+                .Property(e => e.Month)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Subscription>()
+                .Property(e => e.Amount)
+                .HasPrecision(10, 4);
 
             modelBuilder.Entity<TypeOfAffiliate>()
                 .Property(e => e.Name)
@@ -79,6 +107,11 @@ namespace BaseClass.Models
                 .Property(e => e.Lastname)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<User>()
+                .HasMany(e => e.Log)
+                .WithRequired(e => e.User)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<Workshop>()
                 .Property(e => e.Name)
                 .IsUnicode(false);
@@ -88,11 +121,11 @@ namespace BaseClass.Models
                 .IsFixedLength();
 
             modelBuilder.Entity<Setting>()
-                .Property(e => e.ContributionPrice)
-                .HasPrecision(18, 0);
+                .Property(e => e.SubscriptionPrice)
+                .HasPrecision(10, 4);
 
             modelBuilder.Entity<Setting>()
-                .Property(e => e.MonthContribution)
+                .Property(e => e.SubscriptionMonth)
                 .IsFixedLength();
         }
     }

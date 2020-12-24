@@ -57,6 +57,7 @@ namespace View.Menu
             menuList.Items.Add(CreateItemMenu("Notas", PackIconKind.Book, new NoteList()));
             menuList.Items.Add(CreateItemMenu("Cuentas", PackIconKind.AccountEdit, new UserList()));
             menuList.Items.Add(CreateItemMenu("Registros", PackIconKind.ClipboardList, new LogList()));
+            stpViewScreen.Children.Add(new AffiliateList());
             menuList.SelectionChanged += new SelectionChangedEventHandler(MenuList_SelectionChanged);
         }
 

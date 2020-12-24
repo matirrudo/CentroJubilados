@@ -103,6 +103,9 @@
     <Compile Include="Messages\W_ShortNotification.xaml.cs">
       <DependentUpon>W_ShortNotification.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewAffiliate\AffiliateInfo.xaml.cs">
+      <DependentUpon>AffiliateInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewAffiliate\AffiliateList.xaml.cs">
       <DependentUpon>AffiliateList.xaml</DependentUpon>
     </Compile>
@@ -154,6 +157,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Messages\W_ShortNotification.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewAffiliate\AffiliateInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

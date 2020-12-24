@@ -12,6 +12,7 @@ namespace BaseClass.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
+            Log = new HashSet<Log>();
             Setting = new HashSet<Setting>();
         }
 
@@ -32,6 +33,9 @@ namespace BaseClass.Models
 
         [StringLength(25)]
         public string Lastname { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Log> Log { get; set; }
 
         public virtual Rol Rol { get; set; }
 

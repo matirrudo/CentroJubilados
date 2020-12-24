@@ -9,11 +9,18 @@ namespace BaseClass.Models
     [Table("Affiliate")]
     public partial class Affiliate
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Affiliate()
+        {
+            Subscription = new List<Subscription>();
+            Workshop = new List<Workshop>();
+        }
+
         public int Id { get; set; }
 
         [Required]
         [StringLength(25)]
-        public string Firstaname { get; set; }
+        public string Firstname { get; set; }
 
         [Required]
         [StringLength(25)]
@@ -43,10 +50,12 @@ namespace BaseClass.Models
 
         public int TypeOfAffiliateId { get; set; }
 
-        public int? WorkshopId { get; set; }
-
         public virtual TypeOfAffiliate TypeOfAffiliate { get; set; }
 
-        public virtual Workshop Workshop { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual List<Subscription> Subscription { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual List<Workshop> Workshop { get; set; }
     }
 }

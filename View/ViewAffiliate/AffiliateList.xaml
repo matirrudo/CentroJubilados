@@ -7,7 +7,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="1000">
-    <Grid>
+    <Grid x:Name="grdBody">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -17,26 +17,30 @@
         <TextBlock Text="Registro de Afiliados" FontSize="24" HorizontalAlignment="Center" Grid.Row="0"/>
         <StackPanel Grid.Row="1" Orientation="Horizontal">
             <TextBox x:Name="txtBuscar" HorizontalAlignment="Center" Padding="-2,-7,0,-10" Height="30" Margin="10" TextWrapping="Wrap"  VerticalAlignment="Top" Width="227"
-                 Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" materialDesign:HintAssist.Hint="Buscar"/>
+                 Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" materialDesign:HintAssist.Hint="Buscar por Nombre, Apellido o DNI" ToolTip="Buscar por nombre, apellido o DNI" TextChanged="TxtBuscar_TextChanged" />
+            <Button x:Name="btnBuscar" Content="Buscar" Click="BtnBuscar_Click" Background="#FF1956B4" Foreground="White" BorderBrush="#FF1956B4" Style="{StaticResource MaterialDesignFlatMidBgButton}" />
             <Button x:Name="btnNuevo" Content="Nuevo Afiliado" Width="130" Margin="12 5" HorizontalAlignment="Right" Background="Green" BorderBrush="Green" Click="BtnNuevo_Click"/>
         </StackPanel>
         <DataGrid x:Name="dgAffiliates" Grid.Row="2" IsReadOnly="True" AutoGenerateColumns="False" Margin="10 0" ItemsSource="{Binding Path=AffiliateLista, Mode=TwoWay}" BorderBrush="#89000000" BorderThickness="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
-                <DataGridTextColumn Header="Apellido" Binding="{Binding Lastname}"/>
-                <DataGridTextColumn Header="Nombre" Binding="{Binding Firstaname}"/>
-                <DataGridTextColumn Header="DNI" Binding="{Binding DNI}"/>
-                <DataGridTextColumn Header="N° de Beneficio" Binding="{Binding BenefitNumber}"/>
-                <DataGridTextColumn Header="Nacimiento" Binding="{Binding Birthdate, StringFormat='dd-MM-yyyy'}"/>
-                <DataGridTextColumn Header="Direccion" Binding="{Binding Address}"/>
-                <DataGridTextColumn Header="Fecha de Registro" Binding="{Binding RegistrationDate, StringFormat='dd-MM-yyyy'}"/>
-                <DataGridTextColumn Header="Activo" Binding="{Binding Active}"/>
-                <DataGridTextColumn Header="Tipo de Afiliado" Binding="{Binding TypeOfAffiliate.Name}"/>
-                <DataGridTemplateColumn >
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="0.05*"/>
+                <DataGridTextColumn Header="Apellido" Binding="{Binding Lastname}" Width="0.08*"/>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding Firstname}" Width="0.08*"/>
+                <DataGridTextColumn Header="DNI" Binding="{Binding DNI}" Width="0.07*"/>
+                <DataGridTextColumn Header="N° de Beneficio" Binding="{Binding BenefitNumber}" Width="0.1*"/>
+                <DataGridTextColumn Header="Fecha de Nacimiento" Binding="{Binding Birthdate, StringFormat='dd-MM-yyyy'}" Width="0.11*"/>
+                <DataGridTextColumn Header="Direccion" Binding="{Binding Address}" Width="0.1*"/>
+                <DataGridTextColumn Header="Fecha de Registro" Binding="{Binding RegistrationDate, StringFormat='dd-MM-yyyy'}" Width="0.11*"/>
+                <DataGridTextColumn Header="Activo" Binding="{Binding Active}" Width="0.08*"/>
+                <DataGridTextColumn Header="Tipo de Afiliado" Binding="{Binding TypeOfAffiliate.Name}" Width="0.1*"/>
+                <DataGridTemplateColumn Width="0.05*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <materialDesign:PopupBox  PlacementMode="BottomAndAlignRightEdges" UnfurlOrientation="Horizontal">
                                 <ListBox x:Name="listBoxItems">
+                                    <ListBoxItem x:Name="itemShow" Selected="ItemShow_Selected">
+                                        Mostrar 
+                                    </ListBoxItem>
                                     <ListBoxItem x:Name="itemUpdate" >
                                         Editar
                                     </ListBoxItem>

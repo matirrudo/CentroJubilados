@@ -13,12 +13,13 @@ namespace BaseClass.Models
 
         public int? UserId { get; set; }
 
-        public decimal? ContributionPrice { get; set; }
+        [Column(TypeName = "smallmoney")]
+        public decimal? SubscriptionPrice { get; set; }
 
         [StringLength(10)]
-        public string MonthContribution { get; set; }
+        public string SubscriptionMonth { get; set; }
 
-        public int? YearContribution { get; set; }
+        public int? SubscriptionYear { get; set; }
 
         public virtual User User { get; set; }
     }

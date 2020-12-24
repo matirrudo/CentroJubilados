@@ -41,12 +41,29 @@ namespace View.ViewAffiliate
                 }
             }
         }
+        private List<Affiliate> affiliateListaAux;
+        public List<Affiliate> AffiliateListaAux
+        {
+            get
+            {
+                return affiliateListaAux;
+            }
+            set
+            {
+                if (affiliateListaAux != value)
+                {
+                    affiliateListaAux = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
         public AffiliateList()
         {
             InitializeComponent();
             DataContext = this;
             LoadAffiliates();
+            affiliateListaAux = new List<Affiliate>();
         }
 
         public void LoadAffiliates()
@@ -73,6 +90,48 @@ namespace View.ViewAffiliate
             NewAffiliate newAffiliate = new NewAffiliate();
             newAffiliate.DataContext = this;
             newAffiliate.Show();
+        }
+
+        private void BtnBuscar_Click(object sender, RoutedEventArgs e)
+        {
+            if (txtBuscar.Text == "" || txtBuscar.Text is null)
+            {
+                dgAffiliates.ItemsSource = affiliateLista;
+                LoadAffiliates();
+            }
+            else
+            {
+                affiliateListaAux.Clear();
+                for (int i = 0; i < affiliateLista.Count; i++)
+                {
+                    if (affiliateLista.ElementAt(i).DNI.ToLower().Equals(txtBuscar.Text.ToLower()) ||
+                        affiliateLista.ElementAt(i).Firstname.ToLower().Equals(txtBuscar.Text.ToLower()) ||
+                        affiliateLista.ElementAt(i).Lastname.ToLower().Equals(txtBuscar.Text.ToLower()))
+                    {
+                        affiliateListaAux.Add(affiliateLista.ElementAt(i));
+                    }
+                }
+                dgAffiliates.ItemsSource = affiliateListaAux;
+            }
+        }
+
+        private void TxtBuscar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (txtBuscar.Text == "" || txtBuscar.Text is null)
+            {
+                dgAffiliates.ItemsSource = AffiliateLista;
+                LoadAffiliates();
+            }
+        }
+
+        private void ItemShow_Selected(object sender, RoutedEventArgs e)
+        {
+            AffiliateInfo affiliateInfo = new AffiliateInfo
+            {
+                Affiliate = (sender as FrameworkElement).DataContext as Affiliate
+            };
+            affiliateInfo.LoadAffiliate();
+            affiliateInfo.Show();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

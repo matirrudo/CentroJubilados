@@ -43,7 +43,7 @@ namespace View.ViewAffiliate
 
             if (result == "1")
             {
-                affiliate.Firstaname = txtNombre.Text;
+                affiliate.Firstname = txtNombre.Text;
                 affiliate.Lastname = txtApellido.Text;
                 affiliate.DNI = txtDni.Text;
                 affiliate.BenefitNumber = txtBeneficiario.Text;

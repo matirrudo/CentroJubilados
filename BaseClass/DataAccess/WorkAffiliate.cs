@@ -46,7 +46,7 @@ namespace BaseClass.DataAccess
             if (affiliate != null)
             {
                 affiliate.Lastname = entity.Lastname;
-                affiliate.Firstaname = entity.Firstaname;
+                affiliate.Firstname = entity.Firstname;
                 affiliate.DNI = entity.DNI;
                 affiliate.BenefitNumber = entity.BenefitNumber;
                 affiliate.Birthdate = entity.Birthdate;
@@ -55,7 +55,6 @@ namespace BaseClass.DataAccess
                 affiliate.DateOfReincorporation = entity.DateOfReincorporation;
                 affiliate.Active = entity.Active;
                 affiliate.TypeOfAffiliateId = entity.TypeOfAffiliateId;
-                affiliate.WorkshopId = entity.WorkshopId;
 
                 em.SaveChanges();
             }
