@@ -34,7 +34,6 @@ namespace View.Menu
             InitializeComponent();
             AddBar();
             CreateMenuList();
-            CenterWindowOnScreen();
         }
         
         public void AddBar()
@@ -51,13 +50,14 @@ namespace View.Menu
 
         public void CreateAdminMenuList()
         {
-            menuList.Items.Add(CreateItemMenu("Afiliados", PackIconKind.AccountGroup, new AffiliateList())); 
+            AffiliateList affiliateList = new AffiliateList();
+            stpViewScreen.Children.Add(affiliateList);
+            menuList.Items.Add(CreateItemMenu("Afiliados", PackIconKind.AccountGroup, affiliateList)); 
             menuList.Items.Add(CreateItemMenu("Cuotas", PackIconKind.CashUsd, new PaymentList()));
             menuList.Items.Add(CreateItemMenu("Talleres", PackIconKind.HammerWrench, new WorkshopList()));
             menuList.Items.Add(CreateItemMenu("Notas", PackIconKind.Book, new NoteList()));
             menuList.Items.Add(CreateItemMenu("Cuentas", PackIconKind.AccountEdit, new UserList()));
             menuList.Items.Add(CreateItemMenu("Registros", PackIconKind.ClipboardList, new LogList()));
-            stpViewScreen.Children.Add(new AffiliateList());
             menuList.SelectionChanged += new SelectionChangedEventHandler(MenuList_SelectionChanged);
         }
 
@@ -100,16 +100,6 @@ namespace View.Menu
         {
             stpViewScreen.Children.Clear();
             stpViewScreen.Children.Add(userControl);
-        }
-
-        private void CenterWindowOnScreen()
-        {
-            double screenWidth = SystemParameters.PrimaryScreenWidth;
-            double screenHeight = SystemParameters.PrimaryScreenHeight;
-            double windowWidth = this.Width;
-            double windowHeight = this.Height;
-            this.Left = (screenWidth / 2) - (windowWidth / 2);
-            this.Top = (screenHeight / 2) - (windowHeight / 2);
         }
 
         private void BtnOpenMenu_Click(object sender, RoutedEventArgs e)

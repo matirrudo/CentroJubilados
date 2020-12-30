@@ -24,6 +24,7 @@ namespace BaseClass.Services
                 if (user.Password.Equals(password))
                 {
                     userLogged = user;
+                    LogService.AddLog("Entrada al sistema", "Inicio session y entrada al sistema de " + user.Lastname + " " + user.Firstname);
                     if (remember)
                         RememberUser(user);
                     return true;

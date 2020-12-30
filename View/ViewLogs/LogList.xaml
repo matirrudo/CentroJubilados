@@ -7,9 +7,44 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel>
-        <materialDesign:Card Padding="32" Margin="16">
-            <TextBlock x:Name="txtTest" HorizontalAlignment="Center" Text="Bienvenido Registros" VerticalAlignment="Center"/>
-        </materialDesign:Card>
-    </StackPanel>
+    <Grid x:Name="grdBody">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Historial" FontSize="24" HorizontalAlignment="Center" Grid.Row="0"/>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="10 10">
+            <DatePicker Width="200" materialDesign:HintAssist.Hint="Buscar por fecha" Margin="0 0 10 0"/>
+            <ComboBox Width="150" materialDesign:HintAssist.Hint="Filtrar por tiempo..." IsEditable="False" Margin="0 0 10 0">
+                <ComboBoxItem>Ultimas 24 Horas</ComboBoxItem>
+                <ComboBoxItem>Esta semana</ComboBoxItem>
+                <ComboBoxItem>Este mes</ComboBoxItem>
+                <ComboBoxItem>Este año</ComboBoxItem>
+                <ComboBoxItem>Todos</ComboBoxItem>
+            </ComboBox>
+            <ComboBox Width="150" materialDesign:HintAssist.Hint="Filtrar por usuario..." IsEditable="False" Margin="0 0 10 0">
+                <ComboBoxItem>admin</ComboBoxItem>
+                <ComboBoxItem>matias</ComboBoxItem>
+                <ComboBoxItem>matias2</ComboBoxItem>
+                <ComboBoxItem>username</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+        <DataGrid x:Name="dgLogs" Grid.Row="2" IsReadOnly="True" AutoGenerateColumns="False" Margin="10 0" BorderBrush="#89000000" BorderThickness="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="0.05*"/>
+                <DataGridTextColumn Header="Usuario" Binding="{Binding User.Username}" Width="0.1*"/>
+                <DataGridTextColumn Header="Accion" Binding="{Binding Title}" Width="0.2*"/>
+                <DataGridTextColumn Header="Fecha" Binding="{Binding DateLog, StringFormat='dd-MM-yyyy'}" Width="0.11*"/>
+                <DataGridTemplateColumn Width="0.05*" Header="Mostrar">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Mostrar"  Background="#FF1956B4" BorderBrush="#FF1956B4" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
 </UserControl>

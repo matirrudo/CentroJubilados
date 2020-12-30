@@ -28,7 +28,7 @@ namespace BaseClass.DataAccess
 
         public override Rol GetEntity(int id)
         {
-            return em.Rol.Where(r => r.Id == id).First<Rol>();
+            throw new NotImplementedException();
         }
 
         public override void Update(Rol entity)

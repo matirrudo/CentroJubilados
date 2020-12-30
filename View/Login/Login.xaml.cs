@@ -51,6 +51,7 @@ namespace View.Login
             if(!(user is null))
             {
                 LoginService.userLogged = user;
+                LogService.AddLog("Entrada al sistema ", "Entrada al sistema de " + user.Lastname + " " + user.Firstname, user);
                 ShowMainMenu();
             }
         }
